@@ -25,21 +25,21 @@ const AboutUs = () => {
       {/* Content Section */}
       <div className="mt-8 space-y-6">
         <p>
-          Welcome to our organic vegetable store! We are passionate about
+         {` Welcome to our organic vegetable store! We are passionate about
           providing fresh, pesticide-free, and naturally grown vegetables to our
           community. Our farm follows sustainable farming practices, ensuring
-          that every product you receive is 100% organic and full of nutrients.
+          that every product you receive is 100% organic and full of nutrients.`}
         </p>
         <p>
-          With a focus on health, quality, and sustainability, we handpick our
+          {`With a focus on health, quality, and sustainability, we handpick our
           vegetables from our farm, ensuring that only the best reaches your
           kitchen. Whether you're looking for fresh greens, root vegetables, or
-          seasonal specialties, we've got you covered.
+          seasonal specialties, we've got you covered.`}
         </p>
         <p>
-          Thank you for supporting local farmers and choosing healthy, organic
+         {`Thank you for supporting local farmers and choosing healthy, organic
           food. Join us in our mission to make healthy eating accessible and
-          sustainable for everyone!
+          sustainable for everyone!`}
         </p>
       </div>
 
