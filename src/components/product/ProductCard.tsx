@@ -13,6 +13,7 @@ export type Product = {
 };
 
 const ProductCard = ({ product }: { product: Product }) => {
+  console.log("productCard", product)
   const { cart, setCart, addToCart } = useCart(); // Get cart context
 
   const [clientQuantity, setClientQuantity] = useState<number>(0);

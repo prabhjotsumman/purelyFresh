@@ -5,20 +5,29 @@ import Navbar from "@/components/layout/Navbar";
 // import Image from "next/image";
 import { useEffect, useState } from "react";
 
-import { categories, products } from "@/store";
+import { categories } from "@/store";
 import ProductCard from "@/components/product/ProductCard";
 import { useCart } from "@/context/CartContext";
 import Link from "next/link";
+import { fetchProducts } from "../../../lib/api";
+// import Home from "./Products";
 
 const Shop = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const { quantity, totalPrice } = useCart();
+  const [products, setProducts] = useState([]);
 
   const [clientQuantity, setClientQuantity] = useState<number | null>(null);
 
   // ✅ Fix: Ensure quantity is set only on the client
   useEffect(() => {
     setClientQuantity(quantity);
+    async function loadData() {
+      const data = await fetchProducts();
+      console.log("Client-side products:", data); // visible in browser DevTools
+      setProducts(data);
+    }
+    loadData();
   }, [quantity]);
 
   return (
@@ -32,11 +41,10 @@ const Shop = () => {
             {categories.map((category) => (
               <li
                 key={category}
-                className={`p-2 cursor-pointer rounded-md transition text-black ${
-                  selectedCategory === category
-                    ? "bg-green-600 text-white"
-                    : "hover:bg-green-100"
-                }`}
+                className={`p-2 cursor-pointer rounded-md transition text-black ${selectedCategory === category
+                  ? "bg-green-600 text-white"
+                  : "hover:bg-green-100"
+                  }`}
                 onClick={() => setSelectedCategory(category)}
               >
                 {category}
@@ -47,13 +55,14 @@ const Shop = () => {
 
         {/* Product List */}
         <main className="flex-1 p-4">
+          {/* <Home/> */}
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {products
-              .filter(
-                (p) =>
-                  selectedCategory === "All" || p.category === selectedCategory
-              )
-              .map((product, index) => (
+              // ?.filter(
+              //   (p) =>
+              //     selectedCategory === "All" || p.category === selectedCategory
+              // )
+              ?.map((product, index) => (
                 <ProductCard product={product} key={index} />
               ))}
           </div>
