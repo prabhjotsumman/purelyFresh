@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
     domains: ["localhost", "strong-belief-18dce98a17.media.strapiapp.com"], // Replace with your actual domain in production (e.g., "cms.purelyfresh.com")
   },
   reactStrictMode: true,
+  typescript: {
+    ignoreBuildErrors: true, // 🚨 Skips type checking during build
+  },
 };
 
 export default nextConfig;

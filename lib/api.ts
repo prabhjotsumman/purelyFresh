@@ -3,6 +3,32 @@ import axios from "axios";
 //const API_URL = "http://localhost:1337"; // or your deployed URL
 const API_URL = "https://strong-belief-18dce98a17.strapiapp.com"; // or your deployed URL
 
+interface ImageObj {
+    formats: {
+        medium: {
+            url: string
+        }
+    }
+    url: string;
+}
+
+interface DescriptionObj {
+    children: {
+        text: string
+    }[]
+}
+
+interface ProductItem {
+    id: string;
+    image: ImageObj[];
+    name: string;
+    price: string;
+    description: DescriptionObj[];
+    in_stock: string;
+    quantity_available: string;
+    slug: string;
+}
+
 export const fetchProducts = async () => {
     const res = await axios.get(`${API_URL}/api/products?populate=*`);
     console.log("res", res)
@@ -10,7 +36,7 @@ export const fetchProducts = async () => {
     console.log("rawdata", rawData)
 
     // Flatten each product object
-    const normalizedData = rawData.map((item: any) => {
+    const normalizedData = rawData.map((item: ProductItem) => {
         const { id, ...attributes } = item;
 
         const imageUrl =
