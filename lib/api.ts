@@ -1,11 +1,10 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:1337/api"; // or your deployed URL
-
-console.log("api.ts")
+//const API_URL = "http://localhost:1337"; // or your deployed URL
+const API_URL = "https://strong-belief-18dce98a17.strapiapp.com"; // or your deployed URL
 
 export const fetchProducts = async () => {
-    const res = await axios.get(`${API_URL}/products?populate=*`);
+    const res = await axios.get(`${API_URL}/api/products?populate=*`);
     console.log("res", res)
     const rawData = res.data.data;
     console.log("rawdata", rawData)
@@ -20,7 +19,7 @@ export const fetchProducts = async () => {
             "";
 
         const fullImageUrl = imageUrl.startsWith("/")
-            ? `http://localhost:1337${imageUrl}`
+            ? `${API_URL}${imageUrl}`
             : imageUrl;
 
         return {

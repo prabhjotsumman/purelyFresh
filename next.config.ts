@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["localhost"], // Replace with your actual domain in production (e.g., "cms.purelyfresh.com")
+    domains: ["localhost", "strong-belief-18dce98a17.media.strapiapp.com"], // Replace with your actual domain in production (e.g., "cms.purelyfresh.com")
   },
   reactStrictMode: true,
 };
